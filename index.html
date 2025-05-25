@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<!-- Mirrored from roaring-platypus-9d2143.netlify.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 24 May 2025 17:53:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <title>7gramaXZ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('minha-foto.png') no-repeat center center;
+      background-size: cover;
+      color: white;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    header, main {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #fff;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 5px #5F9EA0, 0 0 10px #5F9EA0;
+      }
+      100% {
+        text-shadow: 0 0 20px #5F9EA0, 0 0 30px #5F9EA0;
+      }
+    }
+
+    header nav a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    header nav a:hover {
+      color: #5F9EA0;
+    }
+
+    .discord-link {
+      display: inline-block;
+      margin-left: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .discord-icon {
+      width: 24px;
+      height: 24px;
+      filter: drop-shadow(0 0 5px #5F9EA0);
+      animation: pulse 1.5s infinite;
+    }
+
+    .discord-link:hover {
+      transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #5F9EA0);
+      }
+      50% {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px #5F9EA0);
+      }
+      100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px #5F9EA0);
+      }
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 50px;
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    .content h2 {
+      font-size: 32px;
+      color: #5F9EA0;
+    }
+
+    .content h3 {
+      font-size: 18px;
+      margin: 10px 0 20px;
+      color: #ccc;
+    }
+
+    .content a.button {
+      background-color: darkcyan;
+      color: white;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .content a.button:hover {
+      background-color: #5F9EA0;
+    }
+
+    .character {
+      max-height: 350px;
+    }
+
+    /* Ajuste no container para barra de rolagem */
+    .drop-container-wrapper {
+      height: calc(100vh - 200px); /* Ajuste da altura para preencher o espaço disponível */
+      overflow-y: auto;
+      width: 100%;
+      margin-top: 30px;
+      padding-right: 10px;
+    }
+
+    .drop-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      z-index: 2;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .drop-card {
+      background-color: rgba(250, 250, 250, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      width: 30%; /* Alinha 3 caixas por linha */
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .drop-card img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .drop-card p {
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .drop-card a {
+      background-color: #5F9EA0;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      color: white;
+    }
+
+    .drop-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+    }
+
+    #tela {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Neve caindo */
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 12px; /* Tamanho menor */
+      pointer-events: none;
+      user-select: none;
+      animation: snow 15s linear infinite; /* Menor velocidade */
+    }
+
+    @keyframes snow {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="tela"></div>
+
+  <header>
+    <h1>7grama Design</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Sobre</a>
+      <a href="#" onclick="toggleTheme()">🌙 / ☀️ Modo</a>
+      <a href="https://discord.com/channels/@me" target="_blank" class="discord-link">
+        <img src="https://cdn.jsdelivr.net/gh/edent/SuperTinyIcons/images/svg/discord.svg" alt="Discord" class="discord-icon">
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+      <h2>SEJA BEM-VINDO(A) AO</h2>
+      <h2 style="font-weight: bold; color: white">7grama Design</h2>
+      <h3>melhor site de design espione aqui e baixe logo o seu!</h3>
+      <a class="button" onclick="toggleDrops()">Portifolio</a>
+
+      <div class="drop-container-wrapper" id="drops-wrapper">
+        <div class="drop-container" id="drops">
+          <!-- Primeira linha de caixas -->
+          <div class="drop-card">
+            <img src="images/cloner-image.jpg" alt="Cloner">
+            <p>Mockup</p>
+            <a href="https://www.mediafire.com/file/zv2mcea1sgjajzz/Clonador+fmg.zip/file" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/fps-boost.jpg" alt="Boost">
+            <p>FPS Boost</p>
+            <a href="https://www.mediafire.com/file/tiw9sumvxc0p5jo/fps-boost.rar/file" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/bots-image.jpg" alt="Bots">
+            <p>Bots</p>
+            <a href="https://www.mediafire.com/file/7nczdyilz479x7d/bots.rar/file" target="_blank">COMPRE</a>
+          </div>
+          <!-- Segunda linha de caixas -->
+          <div class="drop-card">
+            <img src="images/mta-mod-menu.jpg" alt="MTA Mod Menu">
+            <p>MTA Mod Menu</p>
+            <a href="https://www.mediafire.com/file/gk7zm7jd2xpevpw/Rysa+Cheat.rar/file" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/spoofer-image.jpg" alt="Spoofer">
+            <p>Spoofer</p>
+            <a href="https://example.com/spoofer" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/gorila-image.jpg" alt="gorila menu">
+            <p>gorila menu</p>
+            <a href="https://www.mediafire.com/file/nt46zpiztqfcqjp/gorila.rar/file" target="_blank">COMPRE</a>
+          </div>
+          <!-- Terceira linha -->
+          <div class="drop-card">
+            <img src="images/cryto-image.jpg" alt="Cryto">
+            <p>Cryto</p>
+            <a href="https://www.mediafire.com/file/9dx7g93z0g93pwa/crypto.rar/file" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/jevelin-image.jpg" alt="Jevelin">
+            <p>Jevelin</p>
+            <a href="https://example.com/jevelin" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/jnkr-image.jpg" alt="JNKR">
+            <p>JNKR</p>
+            <a href="https://example.com/jnkr" target="_blank">COMPRE</a>
+          </div>
+          <!-- Quarta linha -->
+          <div class="drop-card">
+            <img src="images/uzb-image.jpg" alt="UZB">
+            <p>UZB</p>
+            <a href="https://example.com/uzb" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/black-menu.jpg" alt="Black Menu">
+            <p>Black Menu</p>
+            <a href="https://example.com/black-menu" target="_blank">COMPRE</a>
+          </div>
+          <div class="drop-card">
+            <img src="images/developer-image.jpg" alt="Developer">
+            <p>Developer</p>
+            <a href="https://example.com/developer" target="_blank">COMPRE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img src="images/personagem-gta.png" alt="Personagem GTA" class="character">
+  </main>
+
+  <script src="../cdn.jsdelivr.net/npm/tsparticles%402/tsparticles.bundle.min.js"></script>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    function toggleDrops() {
+      const drops = document.getElementById('drops');
+      drops.style.display = drops.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    tsParticles.load("tela", {
+      particles: {
+        number: { value: 100 },
+        color: { value: "#5F9EA0" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5 },
+        size: { value: 2 },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#5F9EA0",
+          opacity: 0.4,
+          width: 1
+        },
+        move: { enable: true, speed: 1 }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: "grab" } },
+        modes: { grab: { distance: 200, line_linked: { opacity: 0.6 } } }
+      },
+      background: { color: "transparent" }
+    });
+
+    function createSnowflakes() {
+      const numberOfSnowflakes = 50;
+      const snowContainer = document.body;
+
+      for (let i = 0; i < numberOfSnowflakes; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.textContent = '.';
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.animationDuration = `${Math.random() * 3 + 12}s`;
+        snowContainer.appendChild(snowflake);
+      }
+    }
+
+    createSnowflakes();
+  </script>
+</body>
+
+</html>
